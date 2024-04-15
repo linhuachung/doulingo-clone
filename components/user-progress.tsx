@@ -3,9 +3,10 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import Image from "next/image";
 import {Infinity} from "lucide-react";
+import {courses} from "@/db/schema";
 
 type Props = {
-    activeCourse: { imagesSrc: string, title: string }
+    activeCourse: typeof courses.$inferSelect
     hearts: number
     points: number
     hasActiveSubscription: boolean
@@ -15,7 +16,7 @@ const UserProgress = ({activeCourse, hasActiveSubscription, points, hearts}: Pro
         <div className="flex items-center justify-between gap-x-2 w-full">
             <Link href="/courses">
                 <Button variant="ghost">
-                    <Image src={activeCourse.imagesSrc} alt={activeCourse.title} className="rounded-md border"
+                    <Image src={activeCourse.imageSrc} alt={activeCourse.title} className="rounded-md border"
                            width={32} height={32}/>
                 </Button>
             </Link>
